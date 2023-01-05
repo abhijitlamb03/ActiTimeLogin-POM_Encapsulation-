@@ -1,0 +1,37 @@
+package POM;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TestActitimeLogin {
+
+	public static void main(String[] args) {
+		// open browser
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver=new FirefoxDriver();
+		
+		//Open Application
+		
+		driver.get("https://timetracker.ctepl.com/actitime/login.jsp");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds( 30));
+		
+		//enter username and password
+		
+		ActiTimeLogin rv=new ActiTimeLogin(driver);
+		
+		rv.setCredintials("admin123", "Manager@123");
+		
+		//select check box
+		
+		rv.selectChekBox();
+		
+		//click on loginbutton
+		
+		rv.clickOnLoginButton();
+	
+	}
+}
